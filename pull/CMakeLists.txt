@@ -21,6 +21,7 @@ add_library(${PROJECT_NAME}::pull ALIAS pull)
 target_link_libraries(pull
   PUBLIC
     ${PROJECT_NAME}::core
+    civetweb
   PRIVATE
     Threads::Threads
     ${CIVETWEB_LIBRARIES}
