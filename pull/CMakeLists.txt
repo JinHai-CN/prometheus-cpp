@@ -29,15 +29,6 @@ target_link_libraries(pull
     $<$<BOOL:${ENABLE_COMPRESSION}>:ZLIB::ZLIB>
 )
 
-
-
-add_custom_target(combined
-        COMMAND cp ${CIVETWEB_PREFIX}/libcivetweb.a .
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        )
-
-add_dependencies(pull combined)
-
 target_include_directories(pull
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
