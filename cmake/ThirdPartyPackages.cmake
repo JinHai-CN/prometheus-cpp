@@ -16,13 +16,15 @@
 # under the License.
 
 # ----------------------------------------------------------------------
-# bzip2
+# CivetWeb
 
 message(STATUS "Building CivetWeb from source")
 set(CIVETWEB_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/civetweb_ep-prefix/src/civetweb_ep")
 set(CIVETWEB_INCLUDE_DIR "${CIVETWEB_PREFIX}/include")
 set(CIVETWEB_CXX_INCLUDE_DIR "${CIVETWEB_PREFIX}/include")
 set(MAKE "make")
+
+set(CMAKE_VERBOSE_MAKEFILE 1)
 
 set(CIVETWEB_STATIC_LIB
         "${CIVETWEB_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}civetweb${CMAKE_STATIC_LIBRARY_SUFFIX}")
@@ -39,10 +41,10 @@ externalproject_add(civetweb_ep
                     1
                     BUILD_COMMAND
                     ${MAKE}
-                    "PREFIX=${CIVETWEB_PREFIX}/lib"
+                    "WITH_CPP=1 lib VERBOSE=1"
                     INSTALL_COMMAND
                     ${MAKE}
-                    PREFIX=${CIVETWEB_PREFIX} install-lib
+                    PREFIX=${CIVETWEB_PREFIX} WITH_CPP=1 lib
                     URL
                     https://github.com/civetweb/civetweb/archive/v1.11.tar.gz
                     BUILD_BYPRODUCTS
